@@ -1,13 +1,13 @@
 ---
 version: "v1"
-appName: "nginx-deployment"
+appName: "battleship"
 env: "staging"
 hosts:
   - "app.tritonhq.io"
 
 argonaut:
   cloudProvider: aws
-  cloudRegion: us-east-2 # TODO: redundant?
+  cloudRegion: us-east-2
   cloudCluster: simp
   artDirGitURL: ""
   gitBranch: ""
