@@ -3,7 +3,7 @@ version: "v1"
 appName: "battleship"
 env: "staging"
 hosts:
-  - "app.tritonhq.io"
+  - "demo.tritonhq.io"
 
 argonaut:
   cloudProvider: aws
