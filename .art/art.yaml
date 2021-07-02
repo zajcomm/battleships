@@ -15,7 +15,7 @@ argonaut:
   env: production
   region: us-east-2
   cluster: production
-  imageRegistry: sk-docker # corresponding to the image that is to be deployed
+  imageRegistry: ghcr # corresponding to the image that is to be deployed
   serviceType: "stateless" # One of {stateful, stateless, managed}
 persistentStorage:
   [] # Set to [] if no persistent storage is required
