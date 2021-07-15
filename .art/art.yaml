@@ -1,6 +1,6 @@
 ---
 version: "v1"
-appName: "battleship1"
+appName: "battleship"
 image: "ghcr.io/argonautdev/battleship"
 imageTag: "latest"
 services:
@@ -8,14 +8,14 @@ services:
     protocol: "tls-terminated" # tls-passthrough, tls-terminated, tcp, http, grpc need to be supported
     external:
       hosts:
-        - "test.x.tritonhq.io"
+        - "battleship.t.tritonhq.io"
       hostPort: 9000
       path: "/"
 argonaut:
-  env: production
-  region: us-east-2
-  cluster: production
-  imageRegistry: ghcr # corresponding to the image that is to be deployed
+  env: tron
+  region: us-east-1
+  cluster: tron
+  imageRegistry: tron # corresponding to the image that is to be deployed
   serviceType: "stateless" # One of {stateful, stateless, managed}
 persistentStorage:
   [] # Set to [] if no persistent storage is required
@@ -194,7 +194,26 @@ extraContainers:
 # Allows you to add any config files in /usr/share/myapp/config/
 # as a ConfigMap
 extraConfig:
-  []
+  - name: configName
+    path: "/path/to/config/folder/"
+    readOnly: true
+    data:
+      pokedex.yaml: |
+        pokemonName: Pikachu
+        pokemonType: Lightning
+      battle.yaml: |
+        pokemon1: Pikachu
+        pokemon2: MewTwo
+  - name: configName2
+    path: "/path/to/config/anotherfolder/"
+    readOnly: true
+    data:
+      pokedex.yaml: |
+        pokemonName: Pikachu
+        pokemonType: Lightning
+      battle.yaml: |
+        pokemon1: Pikachu
+        pokemon2: MewTwo
 # Extra environment variables to append to this nodeGroup
 # This will be appended to the current 'env:' key. You can use any of the kubernetes env
 # syntax here
