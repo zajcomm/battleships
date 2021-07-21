@@ -1,6 +1,6 @@
 ---
 version: "v1"
-appName: "battleship"
+appName: "bs2"
 image: "ghcr.io/argonautdev/battleship"
 imageTag: "latest"
 services:
@@ -8,14 +8,22 @@ services:
     protocol: "tls-terminated" # tls-passthrough, tls-terminated, tcp, http, grpc need to be supported
     external:
       hosts:
-        - "battleship.t.tritonhq.io"
-      hostPort: 9000
-      path: "/"
+        - "bs2.n.tritonhq.io"
+      # hostPort: 9000
+      paths: ["/"]
+# services:
+#   - port: "80"
+#     protocol: "tls-terminated" # tls-passthrough, tls-terminated, tcp, http, grpc need to be supported
+#     external:
+#       hosts:
+#         - "test.x.tritonhq.io"
+#       hostPort: 9000
+#       path: "/"
 argonaut:
-  env: tron
+  env: tropical
   region: us-east-1
-  cluster: tron
-  imageRegistry: tron # corresponding to the image that is to be deployed
+  cluster: tropical
+  imageRegistry: ghcr # corresponding to the image that is to be deployed
   serviceType: "stateless" # One of {stateful, stateless, managed}
 persistentStorage:
   [] # Set to [] if no persistent storage is required
