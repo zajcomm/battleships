@@ -8,7 +8,7 @@ services:
     protocol: "tls-terminated" # tls-passthrough, tls-terminated, tcp, http, grpc need to be supported
     external:
       hosts:
-        - "bs-prod.n.tritonhq.io"
+        - "bs-prod.violet.argonaut.live"
       # hostPort: 9000
       paths: ["/"]
 # services:
@@ -20,9 +20,9 @@ services:
 #       hostPort: 9000
 #       path: "/"
 argonaut:
-  env: tropical
+  env: violet
   region: us-east-1
-  cluster: tropical
+  cluster: violet
   imageRegistry: ghcr # corresponding to the image that is to be deployed
   serviceType: "stateless" # One of {stateful, stateless, managed}
 persistentStorage:
