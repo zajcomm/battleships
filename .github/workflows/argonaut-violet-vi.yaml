@@ -34,19 +34,7 @@ jobs:
           file: ./Dockerfile
           push: false
           tags: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/argonaut/vi:${{ steps.get_sha.outputs.SHA_SHORT }}
-          outputs: type=docker,dest=/tmp/image.tar
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: image
-          path: /tmp/image.tar
-
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: image
-          path: ./tmp
+          outputs: type=docker,dest=image.tar
 
       - name: Push to ecr
         uses: argonautdev/aws-ecr-action@v4.1
@@ -60,7 +48,7 @@ jobs:
           tags: ${{ steps.get_sha.outputs.SHA_SHORT }}
           create_repo: true
           image_scanning_configuration: true
-          docker_image_path: ./tmp/image.tar
+          docker_image_path: image.tar
 
   deploy:
     runs-on: ubuntu-latest
