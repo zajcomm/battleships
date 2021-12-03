@@ -1,42 +1,38 @@
 ---
 version: "v1"
-appName: "bs"
-image: "ghcr.io/argonautdev/battleship"
+appName: "bs2"
+image: "054565121117.dkr.ecr.us-east-1.amazonaws.com/argonaut/bs2"
+
 imageTag: "latest"
+
 services:
   - port: 80
     protocol: "tls-terminated" # tls-passthrough, tls-terminated, tcp, http, grpc need to be supported
     external:
       hosts:
-        - "bs.dev.argonaut.live"
-      # hostPort: 9000
+        - "443"
+      hostPort: 443
       paths: ["/"]
-# services:
-#   - port: "80"
-#     protocol: "tls-terminated" # tls-passthrough, tls-terminated, tcp, http, grpc need to be supported
-#     external:
-#       hosts:
-#         - "test.x.tritonhq.io"
-#       hostPort: 9000
-#       path: "/"
+
 argonaut:
-  env: tropical
+  env: violet
   region: us-east-1
-  cluster: tropical
-  imageRegistry: ghcr # corresponding to the image that is to be deployed
+  cluster: violet
+  imageRegistry: ecr # corresponding to the image that is to be deployed
   serviceType: "stateless" # One of {stateful, stateless, managed}
 persistentStorage:
-  [] # Set to [] if no persistent storage is required
-  # - capacity: "1000M"
-  #   mountPath: "/usr/share/appdata"
-  #   accessMode: "ReadWriteOnce" # ReadWriteOnce and ReadOnlyMany are supported
-replicas: 2
+  []
+
+replicas: 1
 minReplicas: 1
-maxReplicas: 8
+maxReplicas: 1
 resources:
   requests:
-    cpu: "100m"
-    memory: "200M"
+    cpu: "500m"
+    memory: "512M"
+  limits:
+    cpu: "1000m"
+    memory: "1500M"
 #########################################################################################
 # Everything below this is optional and advanced configuration                          #
 # and irrelevant in most scenarios.                                                     #
@@ -45,7 +41,8 @@ resources:
 livenessProbe:
   httpGet:
     path: /
-    port: http
+    port: 80
+  
   # exec:
   #   command:
   #     - sh
@@ -55,14 +52,15 @@ livenessProbe:
   #       test -f /etc/
   failureThreshold: 5
   initialDelaySeconds: 10
+  successThreshold: 3
   periodSeconds: 10
   timeoutSeconds: 5
 # Can only do one of the httpGet and exec handler methods for readinessProbe
 readinessProbe:
-  # Handler 1
   httpGet:
     path: /
     port: 80
+  
   # # Handler 2
   # exec:
   #   command:
@@ -77,18 +75,8 @@ readinessProbe:
   successThreshold: 3
   periodSeconds: 10
   timeoutSeconds: 5
-externalServices:
-  []
-  # - name: rds-postgres
-  #   hosts: # Supports only one host
-  #     - database-1.clo0rbqzxdpa.us-east-2.rds.amazonaws.com
-  #   ports:
-  #     - number: 5432
-  #       name: postgresql
-  #       protocol: TCP
-  #   resolution: NONE # DNS
-  #   location: MESH_EXTERNAL
-  #   # tls: Disabled
+
+externalServices: []
 podAnnotations:
   {}
   # iam.amazonaws.com/role: myapp-cluster
@@ -202,26 +190,27 @@ extraContainers:
 # Allows you to add any config files in /usr/share/myapp/config/
 # as a ConfigMap
 extraConfig:
-  - name: configName
-    path: "/path/to/config/folder/"
-    readOnly: true
-    data:
-      pokedex.yaml: |
-        pokemonName: Pikachu
-        pokemonType: Lightning
-      battle.yaml: |
-        pokemon1: Pikachu
-        pokemon2: MewTwo
-  - name: configName2
-    path: "/path/to/config/anotherfolder/"
-    readOnly: true
-    data:
-      pokedex.yaml: |
-        pokemonName: Pikachu
-        pokemonType: Lightning
-      battle.yaml: |
-        pokemon1: Pikachu
-        pokemon2: MewTwo
+  []
+  # - name: configName
+  #   path: "/path/to/config/folder/"
+  #   readOnly: true
+  #   data:
+  #     pokedex.yaml: |
+  #       pokemonName: Pikachu
+  #       pokemonType: Lightning
+  #     battle.yaml: |
+  #       pokemon1: Pikachu
+  #       pokemon2: MewTwo
+  # - name: configName2
+  #   path: "/path/to/config/anotherfolder/"
+  #   readOnly: true
+  #   data:
+  #     pokedex.yaml: |
+  #       pokemonName: Pikachu
+  #       pokemonType: Lightning
+  #     battle.yaml: |
+  #       pokemon1: Pikachu
+  #       pokemon2: MewTwo
 # Extra environment variables to append to this nodeGroup
 # This will be appended to the current 'env:' key. You can use any of the kubernetes env
 # syntax here
