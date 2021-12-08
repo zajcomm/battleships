@@ -3,7 +3,7 @@ FROM node:15.14-alpine3.13
 
 FROM node:12.18.1
 ENV NODE_ENV=production
-ENV PORT=8080
+ENV PORT=80
 
 WORKDIR /app
 
@@ -13,6 +13,6 @@ RUN npm install --production
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 80
 
 CMD [ "node", "server.js" ]
