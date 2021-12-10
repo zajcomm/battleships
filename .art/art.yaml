@@ -1,8 +1,8 @@
 ---
 version: "v1"
-appName: "bs2"
-image: "054565121117.dkr.ecr.us-east-1.amazonaws.com/argonaut/bs2"
+appName: "bsdh"
 
+image: "hub.docker.com/argonautdev/bsdh"
 imageTag: "latest"
 
 services:
@@ -10,15 +10,15 @@ services:
     protocol: "tls-terminated" # tls-passthrough, tls-terminated, tcp, http, grpc need to be supported
     external:
       hosts:
-        - "bs2.dev.argonaut.live"
+        - "bspr.violet.argonaut.live"
       hostPort: 443
       paths: ["/"]
 
 argonaut:
-  env: dev
+  env: violet
   region: us-east-1
-  cluster: dev
-  imageRegistry: ecr # corresponding to the image that is to be deployed
+  cluster: violet
+  imageRegistry: prashantdh # corresponding to the image that is to be deployed
   serviceType: "stateless" # One of {stateful, stateless, managed}
 persistentStorage:
   []
