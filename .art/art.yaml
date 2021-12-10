@@ -2,7 +2,7 @@
 version: "v1"
 appName: "bsdh"
 
-image: "hub.docker.com/argonautdev/bsdh"
+image: "docker.io/argonautdev/bsdh"
 imageTag: "latest"
 
 services:
@@ -10,7 +10,7 @@ services:
     protocol: "tls-terminated" # tls-passthrough, tls-terminated, tcp, http, grpc need to be supported
     external:
       hosts:
-        - "bspr.violet.argonaut.live"
+        - "bsdh.violet.argonaut.live"
       hostPort: 443
       paths: ["/"]
 
