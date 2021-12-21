@@ -67,5 +67,5 @@ jobs:
           chmod +x ./art
           sudo mv ./art /usr/local/bin/art
           art configure --key ${{ secrets.ART_KEY }} --secret ${{ secrets.ART_SECRET }}
-          art app deploy -f .art/art.yaml --set image="${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/argonaut/bs2" --set imageTag="${{ steps.get_sha.outputs.SHA_SHORT }}"  --set appName="bs2"  --set argonaut.env="dev"  --set argonaut.region="us-east-1"  --set argonaut.cluster="dev"  --set argonaut.serviceType="cronjob"  --set argonaut.imageRegistry="ecr" 
+          art app deploy -f .art/art.yaml --set image="${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/argonaut/bs2" --set imageTag="${{ steps.get_sha.outputs.SHA_SHORT }}"  --set appName="bs2"  --set argonaut.env="dev"  --set argonaut.region="us-east-1"  --set argonaut.cluster="dev"  --set argonaut.serviceType="stateless"  --set argonaut.imageRegistry="ecr" 
 
