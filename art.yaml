@@ -13,7 +13,6 @@ services:
         - "battleship.dev.argonaut.live"
       hostPort: 443
       paths: ["/"]
-
 argonaut:
   env: dev
   region: us-east-1
@@ -23,7 +22,6 @@ argonaut:
   repoName: battleships
 persistentStorage:
   []
-
 replicas: 1
 minReplicas: 1
 maxReplicas: 1
