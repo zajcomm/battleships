@@ -81,8 +81,7 @@ podAnnotations:
   {}
   # iam.amazonaws.com/role: myapp-cluster
 # additionals labels
-labels: 
-  argonaut.dev/repoName: battleships
+labels: {}
 # Allows you to load environment variables from kubernetes secret or config map
 envFrom: []
 # - secretRef:
