@@ -66,7 +66,7 @@ jobs:
         id: get_sha
         run: echo ::set-output name=SHA_SHORT::$(git rev-parse --short HEAD)
       - name: Download art
-        run: curl --silent https://github.com/argonautdev/public/releases/download/v0.4.6-alpha.9/art-linux -L -o art
+        run: curl --silent https://github.com/argonautdev/public/releases/download/v0.4.5/art-linux -L -o art
       - name: Configure art
         run: |
           chmod +x ./art
