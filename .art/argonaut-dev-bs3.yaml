@@ -10,7 +10,7 @@ services:
     protocol: "tls-terminated" # tls-passthrough, tls-terminated, tcp, http, grpc need to be supported
     external:
       hosts:
-        - "bs2.dev.argonaut.live"
+        - "bs3.dev.argonaut.live"
       hostPort: 443
       paths: ["/"]
 
