@@ -24,9 +24,9 @@ argonaut:
 persistentStorage:
   []
 
-replicas: 1
-minReplicas: 1
-maxReplicas: 1
+replicas: 3
+minReplicas: 3
+maxReplicas: 3
 resources:
   requests:
     cpu: "500m"
