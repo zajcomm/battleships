@@ -15,9 +15,9 @@ services:
       paths: ["/"]
 
 argonaut:
-  env: dev
+  env: violet
   region: us-east-1
-  cluster: dev
+  cluster: violet
   imageRegistry: ecr # corresponding to the image that is to be deployed
   serviceType: "stateless" # One of {stateful, stateless, managed}
   repoName: battleships
