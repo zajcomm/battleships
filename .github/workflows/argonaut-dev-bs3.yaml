@@ -72,5 +72,5 @@ jobs:
           chmod +x ./art
           sudo mv ./art /usr/local/bin/art
           art configure --key ${{ secrets.ART_KEY }} --secret ${{ secrets.ART_SECRET }}
-          art app deploy -f .art/argonaut-dev-bs3.yaml --set image="${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/argonaut/bs3" --set argonaut.jobRunID="${{ github.run_id }}" --set argonaut.provider="github" --set imageTag="${{ steps.get_sha.outputs.SHA_SHORT }}"  --set appName="bs3"  --set argonaut.env="dev"  --set argonaut.region="us-east-1"  --set argonaut.cluster="dev"  --set argonaut.serviceType="stateless"  --set argonaut.imageRegistry="ecr" 
+          art app deploy -f .art/argonaut-dev-bs3.yaml --set image="${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/argonaut/bs3" --set 'labels.argonaut\.dev/git-provider'='github' --set  argonaut.git-provider='github' --set  imageTag="${{ steps.get_sha.outputs.SHA_SHORT }}"  --set appName="bs3"  --set argonaut.env="dev"  --set argonaut.region="us-east-1"  --set argonaut.cluster="dev"  --set argonaut.serviceType="stateless"  --set argonaut.imageRegistry="ecr" 
 

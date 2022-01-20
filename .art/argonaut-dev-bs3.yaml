@@ -10,23 +10,23 @@ services:
     protocol: "tls-terminated" # tls-passthrough, tls-terminated, tcp, http, grpc need to be supported
     external:
       hosts:
-        - "bs3.violet.argonaut.live"
+        - "bs3.dev.argonaut.live"
       hostPort: 443
       paths: ["/"]
 
 argonaut:
-  env: violet
+  env: dev
   region: us-east-1
-  cluster: violet
+  cluster: dev
   imageRegistry: ecr # corresponding to the image that is to be deployed
   serviceType: "stateless" # One of {stateful, stateless, managed}
   repoName: battleships
 persistentStorage:
   []
 
-replicas: 3
-minReplicas: 3
-maxReplicas: 3
+replicas: 1
+minReplicas: 1
+maxReplicas: 1
 resources:
   requests:
     cpu: "500m"
