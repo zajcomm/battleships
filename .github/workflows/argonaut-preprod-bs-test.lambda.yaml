@@ -28,7 +28,7 @@ jobs:
               if: startsWith(github.ref, 'refs/heads/')
               run: echo "SHA_OR_VERSION=${{ steps.get_sha.outputs.SHA_SHORT }}" >> $GITHUB_ENV
             - name: Login to ecr public
-              run: aws ecr-public get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin public.ecr.aws
+              run: aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
             - name: Set up QEMU
               uses: docker/setup-qemu-action@v1
             - name: Set up Docker Buildx
