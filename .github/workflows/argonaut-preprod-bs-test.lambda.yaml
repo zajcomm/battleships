@@ -15,7 +15,7 @@ jobs:
               uses: actions/checkout@v2
             - name: Get the tag
               id: get_version
-              if: startsWith(github.ref, 'refs/tags/'
+              if: startsWith(github.ref, 'refs/tags/')
               run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
             - name: Set the tag
               if: startsWith(github.ref, 'refs/tags/')
@@ -64,7 +64,7 @@ jobs:
               uses: actions/checkout@v2
             - name: Get the tag
               id: get_version
-              if: startsWith(github.ref, 'refs/tags/'
+              if: startsWith(github.ref, 'refs/tags/')
               run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
             - name: Set the tag
               if: startsWith(github.ref, 'refs/tags/')
