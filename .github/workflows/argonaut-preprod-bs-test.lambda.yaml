@@ -45,7 +45,7 @@ jobs:
                 file: lambda.Dockerfile
                 outputs: type=docker,dest=image.tar
                 push: "false"
-                tags: 170982004044.dkr.ecr.us-east-2.amazonaws.com/bs-test:${{ env.SHA_OR_VERSION }}
+                tags: 170982004044.dkr.ecr.us-east-2.amazonaws.com/argonaut/bs-test:${{ env.SHA_OR_VERSION }}
             - name: Push to ecr
               id: push_to_ecr
               uses: argonautdev/aws-ecr-action@v4.1
