@@ -2,7 +2,7 @@ name: Deploy lambda app through argonaut
 "on":
     push:
         branches:
-            - ""
+            - main
         tags:
             - ""
     workflow_dispatch: null
