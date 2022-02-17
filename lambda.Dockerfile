@@ -4,13 +4,17 @@ FROM public.ecr.aws/f6j9h7m4/argonautdev/lambda-handler:03e6035 as handler_layer
 
 FROM public.ecr.aws/lambda/nodejs:14
 
+WORKDIR /app
+
+COPY . .
+
 # install dependencies
 RUN npm install --production=false
 
-WORKDIR /var/task
-
 ENV ARGONAUT_SERVERLESS_PORT="3000"
 ENV ARGONAUT_SERVERLESS_RUN_COMMAND="npm run start"
+
+WORKDIR /var/task
 
 COPY --from=handler_layer /main /handler
 
