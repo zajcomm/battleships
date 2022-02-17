@@ -90,7 +90,5 @@ jobs:
                 		
             - name: Deploy lambda app
               run: |-
-                art app lambda deploy \
-                	--name bs-test \
-                	--image-uri 170982004044.dkr.ecr.us-east-2.amazonaws.com/argonaut/bs-test:${{ env.SHA_OR_VERSION }} \
-                	--environment-name preprod
+                art app lambda -f .art/art-bs-test.lambda.yaml \
+                	set='imageUri=170982004044.dkr.ecr.us-east-2.amazonaws.com/argonaut/bs-test:${{ env.SHA_OR_VERSION }}'
