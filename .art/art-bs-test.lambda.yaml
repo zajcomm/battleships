@@ -25,7 +25,7 @@ spec:
   # the ecr image uri which is used to deploy the lambda app
   #
   # +required
-  imageUri: 
+  imageURI: 
   # additional environment variables that are passed to the lambda app
   #
   # these environment variables are runtime variables which will be plugged in when

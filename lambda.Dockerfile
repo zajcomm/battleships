@@ -12,6 +12,7 @@ COPY . .
 RUN npm install --production=false
 
 ENV ARGONAUT_SERVERLESS_PORT="3000"
+
 ENV ARGONAUT_SERVERLESS_RUN_COMMAND="npm run start"
 
 WORKDIR /var/task

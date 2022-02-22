@@ -87,8 +87,5 @@ jobs:
                 chmod +x ./art
                 sudo mv ./art /usr/local/bin/art
                 art configure --key ${{ secrets.ART_KEY }} --secret ${{ secrets.ART_SECRET }}
-                		
             - name: Deploy lambda app
-              run: |-
-                art app lambda -f .art/art-bs-test.lambda.yaml \
-                	set='imageUri=170982004044.dkr.ecr.us-east-2.amazonaws.com/argonaut/bs-test:${{ env.SHA_OR_VERSION }}'
+              run: "art app lambda deploy -f .art/art-bs-test.lambda.yaml \\\n--set='spec.imageUri=170982004044.dkr.ecr.us-east-2.amazonaws.com/argonaut/bs-test:${{ env.SHA_OR_VERSION }}' "
