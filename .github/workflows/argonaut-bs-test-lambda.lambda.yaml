@@ -69,4 +69,4 @@ jobs:
             - {name: Get Short SHA, id: get_sha, if: 'startsWith(github.ref, ''refs/heads/'')', run: 'echo ::set-output name=SHA_SHORT::$(git rev-parse --short HEAD)'}
             - {name: Set the short sha, if: 'startsWith(github.ref, ''refs/heads/'')', run: 'echo "SHA_OR_VERSION=${{ steps.get_sha.outputs.SHA_SHORT }}" >> $GITHUB_ENV'}
             - {name: Setup art cli, run: "curl --silent https://github.com/argonautdev/public/releases/download/v0.6.3-alpha.4/art-linux -L -o art\nchmod +x ./art\nsudo mv ./art /usr/local/bin/art\nart configure --key ${{ secrets.ART_KEY }} --secret ${{ secrets.ART_SECRET }}"}
-            - {name: Deploy lambda app, run: "art app lambda deploy -f .art/art-bs-test.lambda.yaml \\\n--set='spec.imageUri=170982004044.dkr.ecr.us-east-2.amazonaws.com/argonaut/bs-test:${{ env.SHA_OR_VERSION }}' "}
+            - {name: Deploy lambda app, run: "art app lambda deploy -f .art/art-bs-test-dev.lambda.yaml \\\n--set='spec.imageUri=170982004044.dkr.ecr.us-east-2.amazonaws.com/argonaut/bs-test:${{ env.SHA_OR_VERSION }}' "}
