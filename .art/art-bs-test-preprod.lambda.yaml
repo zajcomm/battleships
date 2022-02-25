@@ -13,7 +13,7 @@ spec:
   # Refer: https://docs.argonaut.dev
   #
   # +required
-  argonautEnv: preprod
+  argonautEnv: dev
   # region of the lambda stack
   #
   # region must be same as the ecr repo
