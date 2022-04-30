@@ -69,8 +69,8 @@ jobs:
           build-args: |
             ${{ env.ART_BUILD_SECRETS_FILE }}
           tags: argonauthub/battleship-dev:${{ steps.get_sha.outputs.SHA_SHORT }}
-          cache-from: type=registry,ref=argonauthub/battleship-dev:buildcache
-          cache-to: type=registry,ref=argonauthub/battleship-dev:buildcache,mode=max
+          # cache-from: type=registry,ref=argonauthub/battleship-dev:buildcache
+          # cache-to: type=registry,ref=argonauthub/battleship-dev:buildcache,mode=max
 
   deploy:
     
