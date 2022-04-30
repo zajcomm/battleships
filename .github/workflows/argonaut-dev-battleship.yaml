@@ -97,4 +97,4 @@ jobs:
           chmod +x ./art
           sudo mv ./art /usr/local/bin/art
           art configure --key ${{ secrets.ART_KEY }} --secret ${{ secrets.ART_SECRET }}
-          art app deploy -f .art/argonaut-dev-battleship.yaml --set image="index.docker.io/argonauthub/battleship-dev" --set 'labels.argonaut\.dev/git-provider'='github' --set  argonaut.git-provider='github' --set imageTag="${{ steps.get_sha.outputs.SHA_SHORT }}"   --set appName="battleship"   --set argonaut.env="dev"   --set argonaut.region="us-east-1"   --set argonaut.cluster="dev"   --set argonaut.serviceType="stateless"   --set argonaut.imageRegistry="dockerhub" 
+          art app deploy -f .art/argonaut-dev-battleship.yaml --set image="docker.io/argonauthub/battleship-dev" --set 'labels.argonaut\.dev/git-provider'='github' --set  argonaut.git-provider='github' --set imageTag="${{ steps.get_sha.outputs.SHA_SHORT }}"   --set appName="battleship"   --set argonaut.env="dev"   --set argonaut.region="us-east-1"   --set argonaut.cluster="dev"   --set argonaut.serviceType="stateless"   --set argonaut.imageRegistry="dockerhub" 
