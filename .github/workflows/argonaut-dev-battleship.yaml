@@ -68,9 +68,9 @@ jobs:
           push: true
           build-args: |
             ${{ env.ART_BUILD_SECRETS_FILE }}
-          tags: argonauthub/battleship-dev:${{ steps.get_sha.outputs.SHA_SHORT }}
-          cache-from: type=registry,ref=argonauthub/battleship-dev:buildcache
-          cache-to: type=registry,ref=argonauthub/battleship-dev:buildcache,mode=max
+          tags: index.docker.io/argonauthub/battleship-dev:${{ steps.get_sha.outputs.SHA_SHORT }}
+          cache-from: type=registry,ref=index.docker.io/argonauthub/battleship-dev:buildcache
+          cache-to: type=registry,ref=index.docker.io/argonauthub/battleship-dev:buildcache,mode=max
 
   deploy:
     
