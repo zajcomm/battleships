@@ -56,7 +56,7 @@ jobs:
       - name: Login to Github container repo
         uses: docker/login-action@v1
         with:
-          registry: hub.docker.com
+          registry: docker.io
           username: argonauthub
           password: ${{ secrets.ARG_dockerhub_ACCESS_TOKEN }}
       - name: Build Image and Push
@@ -68,9 +68,9 @@ jobs:
           push: true
           build-args: |
             ${{ env.ART_BUILD_SECRETS_FILE }}
-          tags: hub.docker.com/argonauthub/battleship-dev:${{ steps.get_sha.outputs.SHA_SHORT }}
-          cache-from: type=registry,ref=hub.docker.com/argonauthub/battleship-dev:buildcache
-          cache-to: type=registry,ref=hub.docker.com/argonauthub/battleship-dev:buildcache,mode=max
+          tags: docker.io/argonauthub/battleship-dev:${{ steps.get_sha.outputs.SHA_SHORT }}
+          cache-from: type=registry,ref=docker.io/argonauthub/battleship-dev:buildcache
+          cache-to: type=registry,ref=docker.io/argonauthub/battleship-dev:buildcache,mode=max
 
   deploy:
     
