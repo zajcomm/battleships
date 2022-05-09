@@ -1,9 +1,8 @@
 ---
 version: "v1"
-appName: "bs-dd" 
+appName: "bs-dd"
 image: "054565121117.dkr.ecr.us-east-2.amazonaws.com/argonaut/bs-dd"
 imageTag: "latest"
-
 
 services:
   - port: 80
@@ -21,8 +20,7 @@ argonaut:
   imageRegistry: ecr # corresponding to the image that is to be deployed
   serviceType: "stateless" # One of {stateful, stateless, managed}
   repoName: battleships
-persistentStorage:
-  []
+persistentStorage: []
 
 replicas: 1
 minReplicas: 1
@@ -43,7 +41,7 @@ livenessProbe:
   httpGet:
     path: /
     port: 80
-  
+
   # exec:
   #   command:
   #     - sh
@@ -61,7 +59,7 @@ readinessProbe:
   httpGet:
     path: /
     port: 80
-  
+
   # # Handler 2
   # exec:
   #   command:
@@ -215,6 +213,16 @@ extraConfig:
 # Extra environment variables to append to this nodeGroup
 # This will be appended to the current 'env:' key. You can use any of the kubernetes env
 # syntax here
-extraEnvs: []
-#  - name: MY_ENVIRONMENT_VAR
-#    value: the_value_goes_here
+extraEnvs:
+  - name: DD_AGENT_HOST
+    valueFrom:
+      fieldRef:
+        fieldPath: status.hostIP
+  - name: DD_ENV
+    value: prod
+  - name: DD_VERSION
+    value: "1.0.0"
+  - name: DD_LOGS_INJECTION
+    value: "true"
+  - name: DD_PROFILING_ENABLED
+    value: "true"
