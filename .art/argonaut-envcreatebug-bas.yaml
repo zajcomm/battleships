@@ -120,9 +120,9 @@ schedulerName: ""
 nodeSelector: {}
 tolerations: []
 initContainer:
-  enabled: false
-  # command: ["echo", "I am an initContainer"]
-  # image: nginx
+  enabled: true
+  command: ["echo", "I am an initContainer"]
+  image: "{{ tpl .Values.image }}:{{tpl .Values.imageTag }}"
 initResources:
   {}
   # limits:
