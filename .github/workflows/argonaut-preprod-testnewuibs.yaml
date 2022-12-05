@@ -1,4 +1,4 @@
-name: "Deploy testnewuibs"
+name: "Deploy testnewuibs - preprod"
 
 on:
   push:

@@ -8,11 +8,6 @@ imageTag: "latest"
 services:
   - port: 80
     protocol: "tls-terminated" # tls-passthrough, tls-terminated, tcp, http, grpc need to be supported
-    external:
-      hosts:
-        - "example.com"
-      hostPort: 443
-      paths: ["/"]
 
 argonaut:
   env: preprod
@@ -38,6 +33,8 @@ resources:
 # Everything below this is optional and advanced configuration                          #
 # and irrelevant in most scenarios.                                                     #
 #########################################################################################
+
+# Keda configuration
 # Can only do one of the httpGet and exec handler methods for livenessProbe
 livenessProbe:
   httpGet:
@@ -219,4 +216,4 @@ extraEnvs: []
 #  - name: MY_ENVIRONMENT_VAR
 #    value: the_value_goes_here
 
-# Generated at 2022-11-29 12:16:52.069576816 +0000 UTC
+# Generated at 2022-12-05 19:19:08.516175067 +0000 UTC
